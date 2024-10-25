@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #282c34;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+}
+
+section {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+footer {
+  background-color: #282c34;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* 반응형 스타일 */
+@media (min-width: 768px) {
+  section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .content {
+    width: 40%;
+  }
+}
+
+@media (max-width: 767px) {
+  section {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
