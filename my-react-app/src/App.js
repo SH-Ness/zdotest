@@ -66,7 +66,7 @@ function App() {
                   </GoogleMap>
                 </LoadScript>
             ) : (
-                <p>Loading your location...2</p>  // 위치 정보가 로딩 중일 때 표시
+                <p>Loading your location...</p>  // 위치 정보가 로딩 중일 때 표시
             )}
           </div>
         </section>
