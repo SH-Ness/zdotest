@@ -55,7 +55,7 @@ function App() {
           <h2>Your Current Location</h2>
           {/* 위치 정보가 있을 때만 구글 맵 로드 */}
           {currentPosition ? (
-            <LoadScript googleMapsApiKey="AIzaSyCtxxuWrUqf5E6orVPo0yX-sD0OmcOM7oc"> {/* 여기 YOUR_API_KEY 부분에 자신의 API 키를 입력 */}
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}> {/* 환경 변수를 통해 API 키를 불러옴 */}
               <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={15}
