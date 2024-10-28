@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import './App.css';
 
-// API Gateway 엔드포인트 URL
 const apiUrl = 'https://2zp0lwvxyl.execute-api.ap-northeast-2.amazonaws.com/test';
 
 function App() {
@@ -49,9 +48,6 @@ function App() {
             lng: position.coords.longitude,
           };
           setCurrentPosition(newPosition);
-
-          // 위치가 업데이트될 때마다 DynamoDB에 저장
-          logLocation(newPosition.lat, newPosition.lng);
         },
         (error) => {
           console.error("Error getting location:", error);
@@ -67,10 +63,18 @@ function App() {
     }
   };
 
-  // 컴포넌트가 마운트될 때 실시간 위치 추적 시작
+  // 위치 데이터 5초마다 전송
   useEffect(() => {
     trackLocation();
-  }, []);
+
+    const interval = setInterval(() => {
+      if (currentPosition) {
+        logLocation(currentPosition.lat, currentPosition.lng);  // 5초마다 DynamoDB에 위치 저장
+      }
+    }, 5000);  // 5000ms = 5초
+
+    return () => clearInterval(interval);  // 컴포넌트가 언마운트될 때 interval 정리
+  }, [currentPosition]);
 
   return (
     <div className="container">
