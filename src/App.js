@@ -8,7 +8,7 @@ function App() {
 
   // 지도의 스타일
   const mapStyles = {
-    height: "400px",
+    height: "300px",
     width: "100%"
   };
 
