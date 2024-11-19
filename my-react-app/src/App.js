@@ -10,7 +10,7 @@ function App() {
 
   // 지도의 스타일
   const mapStyles = {
-    height: "300px",
+    height: "400px",
     width: "100%",
   };
 
